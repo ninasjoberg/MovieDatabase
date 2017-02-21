@@ -1,0 +1,2 @@
+# MovieDatabase
+Denna examinerande uppgift ska fokusera på att utnyttja de designmönster som finns tillgängliga för att strukturera upp sin kod. Samtidigt ska uppgiften hjälpa er att utforska scopes, context samt prototypkedjan.  Uppgift  Du ska skapa en applikation i JavaScript som är en filmdatabas. Till applikationen ska du implementera ett eller flera designmönster så som:  Contructor Pattern Prototype Pattern Module Pattern Revealing Module Pattern Mönstrena är inget som måste separeras från varandra och vilket mönster du använder är upp till dig. 
