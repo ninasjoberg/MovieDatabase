@@ -6,13 +6,34 @@
 	<title>MovieDatabase</title>
 </head>
 <body>	
+	<header>
+		<h1>Din filmrådgivare på nätet!</h1>
+	</header>	
 	<section>
-		<h2></h2>
-		<img src="">
-		<p></p>
+		<P>Sortera på genre:</P>
+		<select id="select-genre">
+			<option value="Action">Action</option>
+			<option value="Children">Children</option>
+			<option value="Crime">Crime</option>
+			<option value="Comedy">Comedy</option>
+			<option value="Drama">Drama</option>
+			<option value="Horror">Horror</option>
+			<option value="Romance">Romance</option>
+			<option value="Sci-Fi">Sci-Fi</option>
+		</select>
+		<p>Sortera efter betyg:</p>
+		<select id="select-rating">
+			<option value="5">5</option>
+			<option value="4">4</option>
+			<option value="3">3</option>
+			<option value="2">2</option>
+			<option value="1">1</option>
+		</select>
 	</section>
-
-
+	<section>
+		<h3>Filmer:</h3>
+		<ul id="movie-list"></ul>
+	</section>
 
 	<script type="text/javascript" src="js/array.js"></script>
 	<script type="text/javascript" src="js/main.js"></script>
