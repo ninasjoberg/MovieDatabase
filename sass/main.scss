@@ -9,17 +9,14 @@ body{
   	background-color: #787D85;
   	display: flex;
   	flex-direction: column;
-  	align-items: center;
 }
 
 aside{
-	width: 20%;
-	min-width: 15rem;
-	display: flex;
-	flex-direction: column;
+	width: 18rem;
+	position: fixed;
 	background-color: lightsalmon;
-	padding: 2rem;
-	margin: 2rem 0 0;
+	padding: 12rem 2rem;
+	height: 100%;
 }
 
 h1{
@@ -27,21 +24,14 @@ h1{
 }
 
 header{
+	margin-left: 18rem;
 	padding: 2rem 0;
-}
-
-.main-content{
 	display: flex;
-	width: 100%;
-}
-
-
-.movies{
-	display: flex;
+	justify-content: center;
 }
 
 .movie{
-	max-width: 14rem;
+	max-width: 12rem;
 	margin: 2rem;
 	background-color: white;
 	padding: 0.5rem;
@@ -50,8 +40,9 @@ header{
 ul{
 	display: flex;
 	flex-flow: row wrap;
+	justify-content: center;
+	padding: 0;
 }
-
 
 img{
 	max-width: 100%;
@@ -60,6 +51,10 @@ img{
 
 li{
 	list-style: none;
+}
+
+.movie-section{
+	margin-left: 18rem;
 }
 
 input{
@@ -73,5 +68,10 @@ input{
 }
 
 .sort{
-	margin-bottom: 1.5rem;
+	margin-bottom: 2.5rem;
+}
+
+.input{
+	width: 50%
+	margin-top
 }
