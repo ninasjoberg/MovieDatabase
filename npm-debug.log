@@ -1,0 +1,48 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/ninasjoberg/.nvm/versions/node/v7.5.0/bin/node',
+1 verbose cli   '/Users/ninasjoberg/.nvm/versions/node/v7.5.0/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'compile:watch' ]
+2 info using npm@4.1.2
+3 info using node@v7.5.0
+4 verbose run-script [ 'precompile:watch', 'compile:watch', 'postcompile:watch' ]
+5 info lifecycle portfolio@1.0.0~precompile:watch: portfolio@1.0.0
+6 silly lifecycle portfolio@1.0.0~precompile:watch: no script for precompile:watch, continuing
+7 info lifecycle portfolio@1.0.0~compile:watch: portfolio@1.0.0
+8 verbose lifecycle portfolio@1.0.0~compile:watch: unsafe-perm in lifecycle true
+9 verbose lifecycle portfolio@1.0.0~compile:watch: PATH: /Users/ninasjoberg/.nvm/versions/node/v7.5.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/ninasjoberg/Documents/Frontend/js_inlämning/MovieDatabase/node_modules/.bin:/Users/ninasjoberg/.nvm/versions/node/v7.5.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+10 verbose lifecycle portfolio@1.0.0~compile:watch: CWD: /Users/ninasjoberg/Documents/Frontend/js_inlämning/MovieDatabase
+11 silly lifecycle portfolio@1.0.0~compile:watch: Args: [ '-c', 'node-sass --watch main.scss css/main.css' ]
+12 silly lifecycle portfolio@1.0.0~compile:watch: Returned: code: 1  signal: null
+13 info lifecycle portfolio@1.0.0~compile:watch: Failed to exec compile:watch script
+14 verbose stack Error: portfolio@1.0.0 compile:watch: `node-sass --watch main.scss css/main.css`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/Users/ninasjoberg/.nvm/versions/node/v7.5.0/lib/node_modules/npm/lib/utils/lifecycle.js:279:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:192:7)
+14 verbose stack     at ChildProcess.<anonymous> (/Users/ninasjoberg/.nvm/versions/node/v7.5.0/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:192:7)
+14 verbose stack     at maybeClose (internal/child_process.js:890:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid portfolio@1.0.0
+16 verbose cwd /Users/ninasjoberg/Documents/Frontend/js_inlämning/MovieDatabase
+17 error Darwin 16.4.0
+18 error argv "/Users/ninasjoberg/.nvm/versions/node/v7.5.0/bin/node" "/Users/ninasjoberg/.nvm/versions/node/v7.5.0/bin/npm" "run" "compile:watch"
+19 error node v7.5.0
+20 error npm  v4.1.2
+21 error code ELIFECYCLE
+22 error portfolio@1.0.0 compile:watch: `node-sass --watch main.scss css/main.css`
+22 error Exit status 1
+23 error Failed at the portfolio@1.0.0 compile:watch script 'node-sass --watch main.scss css/main.css'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the portfolio package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     node-sass --watch main.scss css/main.css
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs portfolio
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls portfolio
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
