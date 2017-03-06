@@ -22,7 +22,7 @@ let db = (function(){
 		{
 			title: 'Arrival',
 			year: 2016,
-			genres: ['Drama'],
+			genres: ['Drama', 'Sci-Fi'],
 			cover: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTExMzU0ODcxNDheQTJeQWpwZ15BbWU4MDE1OTI4MzAy._V1_SY1000_CR0,0,640,1000_AL_.jpg',
 			ratings: [4, 5, 5, 3],
 			actors: ['Amy Adams', 'Jeremy Renner', 'Forest Whitaker'],
@@ -58,7 +58,7 @@ let db = (function(){
 		{
 			title: 'Prometheus',
 			year: 2012,
-			genres: ['Action', 'Horror', 'Sci-Fi'],
+			genres: ['Action', 'Sci-Fi', 'Horror'],
 			cover: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTY3NzIyNTA2NV5BMl5BanBnXkFtZTcwNzE2NjI4Nw@@._V1_SY1000_CR0,0,674,1000_AL_.jpg',
 			ratings: [4, 4, 3],
 			actors: ['Noomi Rapace', 'Logan Marshall-Green', 'Michael Fassbender'],
@@ -227,11 +227,15 @@ let db = (function(){
 
 	//adds rating och genres based on user input.
 	function addToMovies(movie, input, type){
-		if(input){
-			movie[type].push(input);
-		}else{
-			alert('write someting in the input field!')
+		if (input === 'Genre' || input === 'Rating'){
+			alert('Select an option');
 		}
+		else if (type == 'genres' && movie.genres.indexOf(input) >= 0){
+			alert('The genre is already added');
+		}
+		else{
+			movie[type].push(input);
+		}	
 	}
 
 
@@ -264,7 +268,10 @@ let presentation = (function(){
 			movieListElement.appendChild(movieListItem);
 			movieCover = `<img src="${movieobj.cover}">`;
 			const averageRating = db.getAvarageRating(movieobj);
-			movieListItem.innerHTML = `${movieCover} <br> <b> ${movieobj.title} </b> <br> <b> Year: </b> ${movieobj.year} <br> <b> Genre: </b> ${movieobj.genres} <br> <b> Actors: </b> ${movieobj.actors} <br> <b> Rating: </b> ${averageRating} of 5 <br> <b> Add genre and rating: </b>`;
+			movieGenres = movieobj.genres.join(', '); //to get a space between the genres.
+			movieActors = movieobj.actors.join(', ');
+			add = `<br> <b> Add genre and rating: </b>`;
+			movieListItem.innerHTML = `${movieCover} <br> <b> ${movieobj.title} </b> <br> <b> Year: </b> ${movieobj.year} <br> <b> Genre: </b> ${movieGenres} <br> <b> Actors: </b> ${movieActors} <br> <b> Rating: </b> ${averageRating} of 5 <br> ${add}`;
 			createInputfield(movieListItem, 'genres', movieobj.id);
 			events.addEventListener('button_genres_' + movieobj.id, 'click', events.addParameter);
 			createInputfield(movieListItem, 'ratings', movieobj.id);
@@ -272,9 +279,28 @@ let presentation = (function(){
 		}
 	}		
 
-	//creates rating and genres inputfields to every listItem (which shows the movies).
+
+	//creates rating and genres dropdowns/inputs to every listItem (which shows the movies).
 	function createInputfield(parent, type, id){
-		const input = document.createElement('input');
+		const input = document.createElement('select');
+		if(type === 'genres'){
+			const arrayGenres = ['Genre', 'Animated', 'Action', 'Children', 'Crime', 'Comedy', 'Drama', 'Horror', 'Romance'];
+			for (let i of arrayGenres){
+				const option = document.createElement('option');
+				option.value = i;
+				option.text = i;
+				input.appendChild(option);
+			} 
+		}
+		else if(type === 'ratings'){
+			const arrayGenres = ['Rating', 1, 2, 3, 4, 5];
+			for (let i of arrayGenres){
+				const option = document.createElement('option');
+				option.value = i;
+				option.text = i;
+				input.appendChild(option);
+			} 
+		}
 		input.setAttribute('class', 'input');
 		input.setAttribute('placeholder', type);
 		input.setAttribute('id', `input_${type}_${id}`); 
@@ -282,6 +308,7 @@ let presentation = (function(){
 		parent.appendChild(input);
 		createButton(parent, type, id, input);
 	}
+
 
 	//creates addButtons used with the rating and genres inputfields.
 	function createButton(parent, type, id){
@@ -291,6 +318,7 @@ let presentation = (function(){
 		button.setAttribute('class', type);
 		parent.appendChild(button);
 	}
+
 
 	return {
 		showMovies: showMovies,
@@ -303,7 +331,7 @@ let presentation = (function(){
 
 let events = (function(){
 
-	//set up eventListerners
+	//set up eventListeners
 	function initEventListeners(){
 		document.getElementById('select-genre').addEventListener('change', showMoviesByGenre);
 		document.getElementById('select-rating').addEventListener('change', showMoviesByRating);
@@ -312,13 +340,12 @@ let events = (function(){
 	}
 
 	function addEventListener(id, event, callback){
-		console.log(id, event, callback);
 		document.getElementById(id).addEventListener(event, callback);
 	}
 
-	//callback for the eventlisterner 'addgenre' 'and addRating'
+
+	//callback for the eventlistener 'addgenre' 'and addRating'
 	function addParameter(event){
-		console.log(event);
 		const split = event.target.id.split('_'); //event.target.id is the button id. the inputfield has the same id except for the first word. ex: button_ratings_3 vs. input_ratings_3
 		const inputId = `input_${split[1]}_${split[2]}`; //gets the input id by modifying the button's id. 
 		const input = document.getElementById(inputId); //to get the input value that someone has provided
@@ -329,9 +356,12 @@ let events = (function(){
 		presentation.showMovies(db.getAllMovies());	
 	}
 
+
 	//when 'filter by genre' is selected at the webpage this function will run. It calls the filterByGenre 
 	//function and then the showMovies function with the new filtered list as parameter. 
 	function showMoviesByGenre(event){
+		resetValues('select-greatest');
+		resetValues('select-rating');
 		if(event.target.value === 'All'){
 			 presentation.showMovies(db.getAllMovies());
 		}else{
@@ -340,9 +370,12 @@ let events = (function(){
 		}
 	}
 
+
 	//when 'filter by rating' is selected at the webpage this function will run. It calls the filterByRating 
 	//function and then showMovies function with the new filtered list as parameter. 
 	function showMoviesByRating(event){
+		resetValues('select-genre');
+		resetValues('select-greatest')
 		if(event.target.value === 'All'){
 			 presentation.showMovies(db.getAllMovies());
 		}else{
@@ -351,9 +384,12 @@ let events = (function(){
 		}
 	}
 
+
 	//when 'sort by rating' is selected at the webpage this function will run and sort the list by 
 	//averageratings and then call the showMovies function with the new filtered list as parameter. 
 	function sortByRating(event){
+		resetValues('select-genre');
+		resetValues('select-rating');
 		if(event.target.value === 'All'){
 			 presentation.showMovies(db.getAllMovies());
 			 return; //to stop the function if target.value = 'all'
@@ -368,6 +404,12 @@ let events = (function(){
 	    	presentation.showMovies(sortedListMovie.reverse());
 	    }
 	}
+
+	//resets selector
+	function resetValues(id){
+		document.getElementById(id).selectedIndex = "0";
+	}
+
 
 	//creates a new movieobject when a new movie has been added at the webpage. it calls the function addNewMovie to 
 	//push it in to the movies-array and then calls showMovies to generate the updated movie-list. 
@@ -389,10 +431,12 @@ let events = (function(){
 			}
 			db.addNewMovie(movieObj);
 			presentation.showMovies(db.getAllMovies());
+			document.getElementById('add-movie').reset();
 		}else{
 			alert('Title and rating is needed.');
 		}
 	}
+
 
 	return {
 		initEventListeners: initEventListeners,
@@ -405,7 +449,7 @@ let events = (function(){
 
 //draws all movies
 presentation.showMovies(db.getAllMovies());
-//calls the set up eventliserner function/module
+//calls the set up eventlistener function/module
 events.initEventListeners();
 
 
