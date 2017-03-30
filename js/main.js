@@ -47,7 +47,7 @@ let db = (function(){
 			id: 4,
 		},
 		{
-			title: 'Broke back mountain',
+			title: 'Brokeback Mountain',
 			year: 2005,
 			genres: ['Drama', 'Romance'],
 			cover: 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTY5NTAzNTc1NF5BMl5BanBnXkFtZTYwNDY4MDc3._V1_.jpg',
