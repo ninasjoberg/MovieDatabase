@@ -2,6 +2,10 @@
 
 Nina SJöberg, Kurs: JavaScript 2, Nackademin ht16 - vt18
 
+Länk till sidan: https://ninasjoberg.github.io/MovieDatabase
+
+Länk till GitHub-repo: https://github.com/ninasjoberg/MovieDatabase
+
 
 ## Uppgift:
 
@@ -22,6 +26,3 @@ Jag har till denna uppgift valt att inte använda mig en av konstruktor. Jag kä
 En konstruktor skulle dock vara en ide att använda om jag på ett effektivt sätt skulle vilja skapa flera movieobjekt med samma egenskaper på samma gång. Om jag framöver skulle vilja utöka movieobjekten med fler egenskaper och då på ett enkelt sätt applicera dessa på alla mina movieobjekt så hade också en konstruktor varit en bra ide att använda.
 
 
-Länk till GitHub-repo: https://github.com/ninasjoberg/MovieDatabase
-
-Länk till sidan: https://ninasjoberg.github.io/MovieDatabase/
