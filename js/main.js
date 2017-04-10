@@ -178,8 +178,8 @@ let db = (function(){
 	//returns movies - the list with all moviesobjects. This function can be reached from outside 
 	//the module unlike the list movies that i want to keep private. 
 	function getAllMovies(){
-		return movies.filter((movie) =>{
-			return movies;
+		return movies.map((movie) =>{
+			return movie;
 		});
 	}	
 
@@ -203,10 +203,10 @@ let db = (function(){
 
 	//returns the average rating of a movie
 	function getAvarageRating(movieobj){
-		const totalSum = movieobj.ratings.reduce(function(sum, rating){
-			return sum + Number(rating); //we get a string when from the inputfiels, but we want it to be a number
+		const totalSum = movieobj.ratings.reduce((sum, rating) => {
+			return sum + Number(rating); //I get a string from the inputfiels, but I want it to be a number
 		},0);
-		return (totalSum / movieobj.ratings.length).toFixed(1); //toFixed, we just want 1 decimal
+		return (totalSum / movieobj.ratings.length).toFixed(1); //toFixed, I just want 1 decimal
 	}
 
 
