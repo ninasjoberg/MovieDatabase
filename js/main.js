@@ -175,8 +175,8 @@ let db = (function(){
 	];
 	
 
-	//returns movies - the list with all moviesobjects. This function can be reached from outside 
-	//the module unlike the list movies that i want to keep private. 
+	//returns a list with all moviesobjects. This function can be reached from outside 
+	//the module unlike the array movies that i want to keep private. 
 	function getAllMovies(){
 		return movies.map((movie) =>{
 			return movie;
